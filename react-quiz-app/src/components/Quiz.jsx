@@ -40,26 +40,32 @@ const Quiz = () => {
 
   const startHandler = () => {
     setStartQuiz(true);
-    setTimer(10); // Reset Timer
+    setIndex(0);
+    setScore(0);
+    setSelectedAnswer(null);
+    setLock(false);
+    setShowResult(false);
+    setTimer(10);
   };
 
   const checkAnswer = (option) => {
     if (!lock) {
       setSelectedAnswer(option);
       setLock(true);
-      if (option === questions.answer) {
+      if (option === quizData[index].answer) {
         setScore(score + 1);
       }
     }
   };
-
-  const questions = quizData[index];
 
   if (showResult) {
     return (
       <div className="container">
         <h1>Quiz Completed!</h1>
         <div className="score">Your Final Score: {score}</div>
+        <button className="restart-btn" onClick={startHandler}>
+          Restart Quiz 🔄
+        </button>
       </div>
     );
   }
@@ -69,22 +75,22 @@ const Quiz = () => {
       <div className="container">
         {!startQuiz ? (
           <button className="start-btn" onClick={startHandler}>
-            Start Quiz
+            Start Quiz 🚀
           </button>
         ) : (
           <>
             <h1>Quiz App</h1>
             <hr />
             <h2>
-              {index + 1}. {questions.question}
+              {index + 1}. {quizData[index].question}
             </h2>
             <ul>
-              {questions.options.map((option, i) => (
+              {quizData[index].options.map((option, i) => (
                 <li
                   key={i}
                   className={
                     lock
-                      ? option === questions.answer
+                      ? option === quizData[index].answer
                         ? "correct"
                         : selectedAnswer === option
                         ? "wrong"
@@ -97,7 +103,10 @@ const Quiz = () => {
                 </li>
               ))}
             </ul>
-            <button disabled={selectedAnswer === null} onClick={() => setLock(true)}>
+            <button
+              disabled={selectedAnswer === null}
+              onClick={() => setLock(true)}
+            >
               Next
             </button>
             <div className="index">
