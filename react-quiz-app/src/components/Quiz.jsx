@@ -43,7 +43,15 @@ const Quiz = () => {
           {questions.options.map((option, i) => (
             <li
               key={i}
-              className={selectedAnswer === option ? "selected" : ""}
+              className={
+                lock
+                  ? option === questions.answer
+                    ? "correct"
+                    : selectedAnswer === option
+                    ? "wrong"
+                    : "option"
+                  : "option"
+              }
               onClick={() => checkAnswer(option)}
             >
               {option}
@@ -54,7 +62,7 @@ const Quiz = () => {
           Next
         </button>
         <div className="index">
-          {index + 1} out of {quizData.length}
+          {index + 1} out of {quizData.length} questions
         </div>
         <div className="score">Score: {score}</div>
       </div>

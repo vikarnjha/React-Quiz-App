@@ -1,0 +1,94 @@
+.container {
+  width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #6dd5fa, #2980b9);
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 20px 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+li:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.selected {
+  background: #27ae60;
+  color: white;
+}
+
+button {
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background: #34495e;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #2c3e50;
+}
+
+button:disabled {
+  background: #7f8c8d;
+  cursor: not-allowed;
+}
+
+.index {
+  margin: 20px 0;
+}
+
+.score {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.correct {
+  background: #27ae60;
+  color: white;
+}
+
+.wrong {
+  background: #e74c3c;
+  color: white;
+}
+
+.option {
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.option:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
