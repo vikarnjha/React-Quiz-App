@@ -1,11 +1,12 @@
 import { } from 'react'
 import './App.css'
+import Quiz from './components/Quiz'
 
 function App() {
 
   return (
     <>
-      <h1>Setup Quiz</h1>
+      <Quiz/>
     </>
   )
 }
