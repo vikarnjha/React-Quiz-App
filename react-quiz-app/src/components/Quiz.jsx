@@ -9,17 +9,18 @@ const Quiz = () => {
   const [lock, setLock] = useState(false);
   const [timer, setTimer] = useState(10);
   const [showResult, setShowResult] = useState(false);
+  const [startQuiz, setStartQuiz] = useState(false);
 
   useEffect(() => {
-    if (timer > 0 && !lock) {
+    if (startQuiz && timer > 0 && !lock) {
       const interval = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1);
+        setTimer((prev) => prev - 1);
       }, 1000);
       return () => clearInterval(interval);
     } else if (timer === 0 && !lock) {
       setLock(true);
     }
-  }, [timer, lock]);
+  }, [timer, lock, startQuiz]);
 
   useEffect(() => {
     if (lock) {
@@ -37,16 +38,10 @@ const Quiz = () => {
     }
   }, [lock, index]);
 
-  if (showResult) {
-    return (
-      <div className="container">
-        <h1>Quiz Completed!</h1>
-        <div className="score">Your Final Score: {score}</div>
-      </div>
-    );
-  }
-
-  const questions = quizData[index];
+  const startHandler = () => {
+    setStartQuiz(true);
+    setTimer(10); // Reset Timer
+  };
 
   const checkAnswer = (option) => {
     if (!lock) {
@@ -58,54 +53,60 @@ const Quiz = () => {
     }
   };
 
-  const nextQuestion = () => {
-    if (index < quizData.length - 1) {
-      setIndex(index + 1);
-      setSelectedAnswer(null);
-      setLock(false);
-      setTimer(10);
-    }
-  };
+  const questions = quizData[index];
 
-  if (!questions) {
-    return <div>Loading...</div>;
+  if (showResult) {
+    return (
+      <div className="container">
+        <h1>Quiz Completed!</h1>
+        <div className="score">Your Final Score: {score}</div>
+      </div>
+    );
   }
 
   return (
     <>
       <div className="container">
-        <h1>Quiz App</h1>
-        <hr />
-        <h2>
-          {index + 1}. {questions.question}
-        </h2>
-        <div className="timer">Time Left: {timer} seconds</div>
-        <ul>
-          {questions.options.map((option, i) => (
-            <li
-              key={i}
-              className={
-                lock
-                  ? option === questions.answer
-                    ? "correct"
-                    : selectedAnswer === option
-                    ? "wrong"
-                    : "option"
-                  : "option"
-              }
-              onClick={() => checkAnswer(option)}
-            >
-              {option}
-            </li>
-          ))}
-        </ul>
-        <button onClick={nextQuestion} disabled={selectedAnswer === null}>
-          Next
-        </button>
-        <div className="index">
-          {index + 1} out of {quizData.length} Questions
-        </div>
-        <div className="score">Your Score: {score}</div>
+        {!startQuiz ? (
+          <button className="start-btn" onClick={startHandler}>
+            Start Quiz
+          </button>
+        ) : (
+          <>
+            <h1>Quiz App</h1>
+            <hr />
+            <h2>
+              {index + 1}. {questions.question}
+            </h2>
+            <ul>
+              {questions.options.map((option, i) => (
+                <li
+                  key={i}
+                  className={
+                    lock
+                      ? option === questions.answer
+                        ? "correct"
+                        : selectedAnswer === option
+                        ? "wrong"
+                        : "option"
+                      : "option"
+                  }
+                  onClick={() => checkAnswer(option)}
+                >
+                  {option}
+                </li>
+              ))}
+            </ul>
+            <button disabled={selectedAnswer === null} onClick={() => setLock(true)}>
+              Next
+            </button>
+            <div className="index">
+              {index + 1} out of {quizData.length} Questions
+            </div>
+            <div className="score">Your Score: {score}</div>
+            <div className="timer">Time Left: {timer}s</div>
+          </>
+        )}
       </div>
     </>
   );
