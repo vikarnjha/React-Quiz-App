@@ -1,94 +1,100 @@
-.container {
-  width: 600px;
-  margin: 50px auto;
-  padding: 20px;
-  background: linear-gradient(135deg, #6dd5fa, #2980b9);
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  color: #fff;
-  font-family: Arial, sans-serif;
-}
-
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-}
-
-h2 {
-  font-size: 1.5rem;
-  margin: 20px 0;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-li:hover {
-  background: rgba(255, 255, 255, 0.6);
-}
-
-.selected {
-  background: #27ae60;
-  color: white;
-}
-
-button {
-  padding: 10px 20px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 10px;
-  background: #34495e;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-button:hover {
-  background: #2c3e50;
-}
-
-button:disabled {
-  background: #7f8c8d;
-  cursor: not-allowed;
-}
-
-.index {
-  margin: 20px 0;
-}
-
-.score {
-  margin: 10px 0;
-  font-weight: bold;
-}
-
-.correct {
-  background: #27ae60;
-  color: white;
-}
-
-.wrong {
-  background: #e74c3c;
-  color: white;
-}
-
-.option {
-  background: rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.option:hover {
-  background: rgba(255, 255, 255, 0.6);
-}
+body {
+    font-family: Arial, sans-serif;
+    background: #1e272e;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background: #2f3640;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #f5f6fa;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .timer {
+    font-size: 1.2rem;
+    color: #ff4757;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px;
+    margin: 10px 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  li:hover {
+    background: rgba(255, 255, 255, 0.6);
+  }
+  
+  .correct {
+    background: #27ae60;
+    color: white;
+  }
+  
+  .wrong {
+    background: #e74c3c;
+    color: white;
+  }
+  
+  .option {
+    background: rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  button:hover {
+    background: #2980b9;
+  }
+  
+  button:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+  }
+  
+  .index {
+    margin-top: 15px;
+    font-size: 1.2rem;
+  }
+  
+  .score {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f1c40f;
+  }
+  
